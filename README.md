@@ -20,6 +20,11 @@ These features are provided by the `<I18nPage>` component.
 
 ## Demo
 
+### Playground
+Play around with the in-place editing on
+https://stackblitz.com/github/versiobit/better-i18n-for-svelte
+
+### Production example
 The website of https://versiobit.com was built using this library. Switch from english to german in the footer.
 If you inspect the source HTML you see all i18n messages are embedded as raw strings and SEO friendly meta and link tags are present.
 
