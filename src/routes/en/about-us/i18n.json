@@ -1,0 +1,28 @@
+{
+  "messages": {
+    "title": {
+      "en": "About us (English Version)",
+      "de": "Über uns (German version of about-us)"
+    },
+    "description": {
+      "en": "This page showcases the use of the <I18nPage> component.",
+      "de": "Diese Seite ist über unser Team."
+    },
+    "feature.title": {
+      "en": "Notice that the page title and meta description are automatically set.",
+      "de": "Titel der Seite und Meta-Descricption werden automatisch gesetzt."
+    },
+    "feature.url": {
+      "en": "Take a look at the german version of this page and notice that it has a localized URL.",
+      "de": "Die URL ist ebenfalls lokalisiert und für die englische und deutsche Seite unterschiedlich."
+    },
+    "feature.alternate": {
+      "en": "It also sets <link rel=\"alternate\" hreflang=\"de\" href=\"...\"> tags automatically, to notify search engines about the localized versions.",
+      "de": "Link alternate Tag werden ebenfalls automatisch erzeugt."
+    }
+  },
+  "paths": {
+    "en": "/en/about-us/",
+    "de": "/de/ueber-uns/"
+  }
+}

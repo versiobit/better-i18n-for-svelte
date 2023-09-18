@@ -1,6 +1,7 @@
 {
-	"name": "cool-i18n-svelte",
-	"version": "0.0.1",
+	"name": "better-i18n-for-svelte",
+	"version": "0.1.0",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -24,11 +25,11 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
+		"@sveltejs/kit": "^1.20.4",
 		"svelte": "^4.0.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
+		"@sveltejs/adapter-static": "^2.0.0",
 		"@sveltejs/package": "^2.0.0",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",

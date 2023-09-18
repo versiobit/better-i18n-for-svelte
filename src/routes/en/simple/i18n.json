@@ -1,0 +1,13 @@
+{
+  "messages": {
+    "intro": {
+      "en": "Click me to edit."
+    },
+    "title": {
+      "en": "Simple demo"
+    }
+  },
+  "paths": {
+    "en": "/en/simple/"
+  }
+}
