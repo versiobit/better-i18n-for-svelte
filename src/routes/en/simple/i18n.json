@@ -1,10 +1,12 @@
 {
   "messages": {
     "intro": {
-      "en": "Click here to edit and notice the change in your GIT repo."
+      "en": "Click here to edit and notice the change in your GIT repo.",
+      "de": "Hier klicken zum Editieren."
     },
     "title": {
-      "en": "Simple demo"
+      "en": "Simple demo",
+      "de": "Einfache Demo"
     }
   },
   "paths": {

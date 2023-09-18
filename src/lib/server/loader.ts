@@ -14,7 +14,7 @@ export function loadI18nData() {
             i18nData[category] = loadI18nCategoryData(category);
         });
 
-    // console.log("loaded i18nMessages", i18nMessages);
+    // console.log("loaded i18nData", JSON.stringify(i18nData, null, 2));
     return i18nData;
 }
 

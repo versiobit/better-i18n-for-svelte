@@ -24,15 +24,15 @@ export class I18nContext {
         }
         
         const category = this.getI18nCategoryOverwrite() || routeId;
-        const defaultText = `${category}:${name}`;
-        const text = this.translate(category, lang, name) || defaultText;
-        // console.log(`i18n translated ${category}:${name} to '${text}'`)
+        const messageId = `${category}:${lang}:${name}`;
+        const text = this.translate(category, lang, name) || messageId;
+        console.log(`i18n translated ${messageId} to '${text}'`)
 
         return {
             category,
             lang,
             text,
-            isDefault: text == defaultText
+            isDefault: text === messageId
         };
     }
 
