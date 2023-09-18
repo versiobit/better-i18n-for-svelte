@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { getPageLang } from '$lib/i18n-util.js';
-
-	const lang = getPageLang($page);
+	
+	const currentUrl = $page.url;
 </script>
+
+<div>Current URL: {currentUrl}</div>
 
 <div class="">
 	Navigation:
