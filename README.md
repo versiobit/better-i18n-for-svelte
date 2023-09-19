@@ -25,6 +25,8 @@ Run locally with `npm run dev` or try it on [StackBlitz](https://stackblitz.com/
 
 First steps: Open http://localhost:5173/en/simple/ and modify the h1 element in the web browser. You'll notice that the content of src/routes/en/simple/i18n.json file got updated. This way you can manage and review your i18n easily.
 
+![In-Place edit demo](https://raw.githubusercontent.com/versiobit/better-i18n-for-svelte/main/demo.gif)
+
 The website of https://versiobit.com was built using this library. Switch from english to german in the footer.
 If you inspect the source HTML you see all i18n messages are embedded as raw strings and SEO friendly meta and link-alternate tags are present.
 
