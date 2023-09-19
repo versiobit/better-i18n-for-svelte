@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	
-	const currentUrl = $page.url;
+	const pageUrl = $page.url;
 </script>
 
-<div>Current URL: {currentUrl}</div>
+<div style="font-size:10px; margin-bottom:18px">Page URL: {pageUrl}</div>
 
 <div class="">
 	Navigation:
 	<ul>
-		<li><a href="/en/simple/">Simple page</a></li>
-		<li><a href="/en/about-us/">About us (I18nPage component)</a></li>
+		<li><a href="/en/simple/">Simple page</a> (I18n component demo)</li>
+		<li><a href="/en/about-us/">About us</a> (I18nPage component demo)</li>
 	</ul>
 </div>
