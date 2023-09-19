@@ -64,7 +64,7 @@ Create a shared about.svelte component (e.g. in src/routes/en/about-us/about.sve
 	<p><I18n name="description" /></p>
 </I18nPage>
 ```
-The `id` is the file path of this component in your GIT repository. Thus, the id stays the same for each language variant of the page.
+The `id` should be the directory path of this component within 'src/routes'. Thus, the id stays the same for each language variant of the page.
 
 
 ## Customization
