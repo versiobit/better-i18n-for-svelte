@@ -2,6 +2,7 @@
 	import { dev } from "$app/environment";
 	import { page } from "$app/stores";
 	import { getI18nContext, getPageLang } from "$lib/i18n-util.js";
+	import { getI18nConfig } from "./config.js";
 	import I18nScope from "./i18n-scope.svelte";
 	import I18n from "./i18n.svelte";
 
@@ -15,6 +16,7 @@
 	export let id: string;
 
 	const paths = getI18nContext().getPaths(id);
+	const siteUrlPrefix = getI18nConfig().siteUrl || '';
 
 	let pageTitle = getI18nContext().translate(id, getPageLang($page), 'title');
 	let title = `${pageTitle} | Versiobit`;
@@ -27,10 +29,10 @@
     <title>{title}</title>
 	<meta name="description" content={description}>
 
-	<link rel="canonical" href={$page.url.pathname} />
+	<link rel="canonical" href={siteUrlPrefix + $page.url.pathname} />
 
 	{#each Object.keys(paths) as lang}
-	<link rel="alternate" hreflang={lang} href={paths[lang]} />
+	<link rel="alternate" hreflang={lang} href={siteUrlPrefix + paths[lang]} />
 	{/each}
 </svelte:head>
 

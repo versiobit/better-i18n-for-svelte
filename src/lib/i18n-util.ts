@@ -1,11 +1,8 @@
 import { getContext, setContext } from 'svelte';
 import { I18nContext } from './i18n-context.js';
+import { setI18nConfig, type I18nConfig, getI18nConfig } from './config.js';
 
 const i18nContextKey = {};
-
-let options: I18nOptions = {
-	defaultLanguage: 'en'
-};
 
 export function getI18nContext(): I18nContext {
 	const i18n = getContext(i18nContextKey);
@@ -16,16 +13,16 @@ export function getI18nContext(): I18nContext {
 	return i18n as I18nContext;
 }
 
-export function initI18nContext(i18nData: any, i18nOptions?: I18nOptions) {
+export function initI18nContext(i18nData: any, i18nConfig?: I18nConfig) {
 	setContext(i18nContextKey, new I18nContext(i18nData));
-	if (i18nOptions) options = i18nOptions;
+	if (i18nConfig) setI18nConfig(i18nConfig);
 }
 
 export function getPageLang(page: any): string {
 	if (page.params.lang) {
 		return page.params.lang;
 	} else {
-		return getLangFromPath(page.route.id!!) || options.defaultLanguage;
+		return getLangFromPath(page.route.id!!) || getI18nConfig().defaultLanguage;
 	}
 }
 
@@ -41,8 +38,4 @@ export function getLangFromPath(path: string): string | null {
 	}
 
 	return null;
-}
-
-export interface I18nOptions {
-	defaultLanguage: string;
 }
