@@ -1,6 +1,6 @@
 {
 	"name": "better-i18n-for-svelte",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
