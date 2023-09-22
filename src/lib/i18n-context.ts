@@ -1,5 +1,8 @@
 import { getPageLang } from "./i18n-util.js";
 import type { Page } from "@sveltejs/kit";
+import { getI18nConfig } from "./config.js";
+import type { ScopeObject } from "./scope.js";
+import { getContext, setContext } from "svelte";
 
 function getOrCreate(obj: any, key: string) {
     obj[key] = obj[key] || {};
@@ -7,9 +10,9 @@ function getOrCreate(obj: any, key: string) {
 }
 
 export class I18nContext {
-    private categoryOverwrite: string | null = null;
     private data: any;
     private substrate: any;
+    private scopeStack: ScopeObject[] = [];
 
     constructor(i18nData: any) {
         this.data = i18nData;
@@ -23,10 +26,10 @@ export class I18nContext {
             throw new Error(`Page lang unknown`);
         }
         
-        const category = this.getI18nCategoryOverwrite() || routeId;
+        const category = this.getCurrentCategory() || routeId;
         const messageId = `${category}:${lang}:${name}`;
         const text = this.translate(category, lang, name) || messageId;
-        console.log(`i18n translated ${messageId} to '${text}'`)
+        if (getI18nConfig().debug) console.log(`i18n: translated ${messageId} to '${text}'`)
 
         return {
             category,
@@ -69,16 +72,36 @@ export class I18nContext {
         nameObj[lang] = text;
     }
 
-    setI18nCategoryOverwrite(category: string | null) {
-        this.categoryOverwrite = category;
-    }
-
-    getI18nCategoryOverwrite(): string | null {
-        return this.categoryOverwrite;
-    }
-
     getI18nSubstrate(): string {
         return JSON.stringify(this.substrate);
+    }
+
+    enterScope(scope: ScopeObject) {
+        // trigger cleanup
+        this.getCurrentScope();
+
+        if (getI18nConfig().debug) console.log(`i18n: entering scope ${scope.category}`);
+        this.scopeStack.unshift(scope);
+        setContext(scope, {});
+    }
+
+    private getCurrentScope(): ScopeObject | null {
+        // drop scopes that no longer reachable in current context, and call onLeave
+        this.scopeStack = this.scopeStack.filter(s => {
+            if (getContext(s) == null) {
+                if (getI18nConfig().debug) console.log(`i18n: leaving scope ${s.category}`);
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        const currentScope = this.scopeStack.length > 0 ? this.scopeStack[0] : null;
+        return currentScope;
+    }
+
+    private getCurrentCategory(): string | null {
+        return this.getCurrentScope()?.category || null;
     }
 
 }

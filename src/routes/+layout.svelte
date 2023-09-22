@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { defaultConfig, type I18nConfig } from '$lib/config.js';
 	import { getI18nContext, initI18nContext } from '$lib/i18n-util.js';
 	import Header from './header.svelte';
 	import { serverI18nData } from './layout-i18n.js';
@@ -10,16 +11,18 @@
 		i18nSubstrate = el!.textContent as string;
 	}
 
+	const i18nConfig: I18nConfig = Object.assign({}, defaultConfig, { debug: true });
+
 	const serverI18nDataAvailable = Object.keys(serverI18nData).length > 0;
 	if (serverI18nDataAvailable) {
 		// only possible in dev mode
 		// console.log("i18n init with server messages");
-		initI18nContext(serverI18nData);	
+		initI18nContext(serverI18nData, i18nConfig);
 	} else {
 		// in browser context, use substrated i18n
 		const i18nData = JSON.parse(i18nSubstrate);
 		// console.log(`i18n init with substrate`, i18nData)
-		initI18nContext(i18nData);
+		initI18nContext(i18nData, i18nConfig);
 	}
 
 	function updateSubstrate() {

@@ -14,8 +14,10 @@ export function getI18nContext(): I18nContext {
 }
 
 export function initI18nContext(i18nData: any, i18nConfig?: I18nConfig) {
-	setContext(i18nContextKey, new I18nContext(i18nData));
 	if (i18nConfig) setI18nConfig(i18nConfig);
+	if (getI18nConfig().debug) console.log("i18n: init", getI18nConfig());
+
+	setContext(i18nContextKey, new I18nContext(i18nData));
 }
 
 export function getPageLang(page: any): string {
