@@ -86,18 +86,11 @@ export class I18nContext {
     }
 
     private getCurrentScope(): ScopeObject | null {
-        // drop scopes that no longer reachable in current context, and call onLeave
-        this.scopeStack = this.scopeStack.filter(s => {
-            if (getContext(s) == null) {
-                if (getI18nConfig().debug) console.log(`i18n: leaving scope ${s.category}`);
-                return false;
-            } else {
-                return true;
-            }
+        const validScopes = this.scopeStack.filter(scope => {
+            return getContext(scope) != null;
         });
 
-        const currentScope = this.scopeStack.length > 0 ? this.scopeStack[0] : null;
-        return currentScope;
+        return validScopes.length > 0 ? validScopes[0] : null;
     }
 
     private getCurrentCategory(): string | null {
