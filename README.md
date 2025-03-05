@@ -2,6 +2,9 @@
 
 SEO focused library for multi-language SvelteKit sites.
 
+> [!NOTE]  
+> This library is no longer maintained. I recommend using Paraglide JS. Maybe it will be possible to implement a similar UI based editing experience with it in the future.
+
 Core features:
 
 * In-place editing of i18n messages via web brower in development mode.
